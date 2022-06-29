@@ -5,7 +5,13 @@
   box-sizing: border-box;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+}
+
 #outline {
+  margin: 2rem;
   width: 95vw;
   max-width: 22.5rem;
   height: auto;
@@ -13,15 +19,43 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 2.5%;
-  left: 2.5%;
   background-color: rgb(255, 221, 94);
   border: 0.25rem outset rgb(227, 173, 92);
   border-radius: 2rem;
   font-family: "Barlow", monospace;
 }
 
+@media screen and (max-width: 850px) and (orientation: landscape) {
+  #outline {
+    margin: 0.25rem;
+    max-width: 95vw;
+    height: 97vh;
+    align-items: space-around;
+  }
+  #outline header {
+    align-self: flex-start;
+    padding-left: 1.75rem;
+  }
+
+  main {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+  }
+  main .screen {
+    margin: 1rem;
+    width: 90%;
+    justify-content: flex-end;
+  }
+  main .buttons {
+    margin-top: -2rem;
+    gap: 0.1rem;
+  }
+  main .button {
+    transform: scale(0.9);
+  }
+}
 header {
   margin: 2rem;
   margin-bottom: 0;

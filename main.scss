@@ -6,7 +6,13 @@
     box-sizing: border-box;
 }
 
+body{
+    display: flex;
+    justify-content: center;
+}
+
 #outline{
+    margin: 2rem;
     width: 95vw;
     max-width: 22.5rem;
     height: auto;
@@ -16,10 +22,6 @@
     justify-content: center;
     align-items: center;
 
-    position: absolute;
-    top: 2.5%;
-    left: 2.5%;
-
     background-color: $colour-background;
     border: 0.25rem outset $colour-border;
     border-radius: 2rem;
@@ -27,6 +29,7 @@
     font-family: $font-primary;
 }
 
+@import "./landscape";
 @import "./header";
 @import "./screen";
 @import "./button-layout";
