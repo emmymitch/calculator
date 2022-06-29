@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#outline {
+  padding: 0.5rem;
+  width: 95vw;
+  max-width: 30rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 2.5%;
+  left: 2.5%;
+  background-color: rgb(255, 221, 94);
+  border-radius: 2rem;
+  font-family: "Barlow", monospace;
+}
+
+header {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(73, 70, 61);
+  font-size: 0.5rem;
+}
+
+.screen {
+  padding: 0.75rem;
+  padding-top: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: rgb(255, 250, 236);
+  border: 4px inset rgb(227, 173, 92);
+  border-radius: 1rem;
+}
+.screen__history {
+  color: rgb(28, 28, 29);
+  font-size: 1rem;
+  opacity: 50%;
+}
+.screen__current {
+  color: rgb(28, 28, 29);
+  font-size: 3rem;
+  font-weight: 300;
+}
+
+.buttons {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(1fr, 4);
+  grid-template-rows: repeat(1fr, 5);
+  gap: 1rem;
+}
+.buttons #AC {
+  grid-area: 1/1/2/2;
+}
+.buttons #plus-minus {
+  grid-area: 1/2/2/3;
+}
+.buttons #percent {
+  grid-area: 1/3/2/4;
+}
+.buttons #divide {
+  grid-area: 1/4/2/5;
+}
+.buttons #b7 {
+  grid-area: 2/1/3/2;
+}
+.buttons #b8 {
+  grid-area: 2/2/3/3;
+}
+.buttons #b9 {
+  grid-area: 2/3/3/4;
+}
+.buttons #multiply {
+  grid-area: 2/4/3/5;
+}
+.buttons #b4 {
+  grid-area: 3/1/4/2;
+}
+.buttons #b5 {
+  grid-area: 3/2/4/3;
+}
+.buttons #b6 {
+  grid-area: 3/3/4/4;
+}
+.buttons #subtract {
+  grid-area: 3/4/4/5;
+}
+.buttons #b1 {
+  grid-area: 4/1/5/2;
+}
+.buttons #b2 {
+  grid-area: 4/2/5/3;
+}
+.buttons #b3 {
+  grid-area: 4/3/5/4;
+}
+.buttons #add {
+  grid-area: 4/4/5/5;
+}
+.buttons #b0 {
+  grid-area: 5/1/6/3;
+}
+.buttons #decimal {
+  grid-area: 5/3/6/4;
+}
+.buttons #equals {
+  grid-area: 5/4/6/5;
+}
+
+.button {
+  width: 3rem;
+  height: 3rem;
+  margin: 0.25rem;
+  border-radius: 50%;
+  font-family: "Barlow", monospace;
+  background-color: rgb(255, 217, 86);
+  color: rgb(73, 70, 61);
+}
