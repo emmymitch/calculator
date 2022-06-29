@@ -25,7 +25,7 @@ body {
   font-family: "Barlow", monospace;
 }
 
-@media screen and (max-width: 850px) and (orientation: landscape) {
+@media screen and (max-width: 930px) and (orientation: landscape) {
   #outline {
     margin: 0.25rem;
     max-width: 95vw;
