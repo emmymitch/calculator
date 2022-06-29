@@ -1,0 +1,92 @@
+.buttons{
+    width: 100%;
+    height: auto;
+    
+    display: grid;
+    grid-template-columns: repeat(1fr, 4);
+    grid-template-rows: repeat(1fr, 5);
+
+    // grid-template-areas: 
+    //     "AC pm percent divide"
+    //     "seven eight nine times"
+    //     "four five six minus"
+    //     "one two three plus"
+    //     "zero zero decimal equals";
+    gap: 1rem;
+
+    #AC{
+        grid-area: 1/1/2/2;
+    }
+
+    #plus-minus{
+        grid-area: 1/2/2/3;
+    }
+
+    #percent{
+        grid-area: 1/3/2/4;
+    }
+
+    #divide{
+        grid-area: 1/4/2/5;
+    }
+
+    #7{
+        grid-area: 2/1/3/2;
+    }
+
+    #8{
+        grid-area: 2/2/3/3;
+    }
+
+    #9{
+        grid-area: 2/3/3/4;
+    }
+
+    #multiply{
+        grid-area: 2/4/3/5;
+    }
+
+    #4{
+        grid-area: 3/1/4/2;
+    }
+
+    #5{
+        grid-area: 3/2/4/3;
+    }
+
+    #6{
+        grid-area: 3/3/4/4;
+    }
+
+    #subtract{
+        grid-area: 3/4/4/5;
+    }
+
+    #1{
+        grid-area: 4/1/5/2;
+    }
+
+    #2{
+        grid-area: 4/2/5/3;
+    }
+
+    #3{
+        grid-area: 4/3/5/4;
+    }
+
+    #add{
+        grid-area: 4/4/5/5;
+    }
+
+    #0{
+        grid-area: 5/1/6/3;
+    }
+
+    #decimal{
+        grid-area: 5/3/6/4;
+    }
+
+    #equals{
+        grid-area: 5/4/6/5;
+    }
+}
