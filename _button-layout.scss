@@ -1,18 +1,12 @@
 .buttons{
+    margin: 1.5rem 0;
     width: 100%;
     height: auto;
     
     display: grid;
     grid-template-columns: repeat(1fr, 4);
     grid-template-rows: repeat(1fr, 5);
-
-    // grid-template-areas: 
-    //     "AC pm percent divide"
-    //     "seven eight nine times"
-    //     "four five six minus"
-    //     "one two three plus"
-    //     "zero zero decimal equals";
-    gap: 1rem;
+    gap: 0.5rem;
 
     #AC{
         grid-area: 1/1/2/2;
