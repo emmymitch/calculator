@@ -1,0 +1,34 @@
+@use "./variables" as *;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#outline{
+    //margin: 1rem;
+    padding: 0.5rem;
+    width: 95vw;
+    max-width: 30rem; //ADD TO MEDIA QUERY
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 2.5%;
+    left: 2.5%;
+
+    background-color: $colour-background;
+    border-radius: 2rem;
+
+    font-family: $font-primary;
+}
+
+@import "./header";
+@import "./screen";
+@import "./button-layout";
+@import "./button-style";
