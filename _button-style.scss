@@ -9,13 +9,10 @@
 
     font-family: $font-primary;
     font-weight: 600;
+    font-size: 1.2rem;
 
     background-color: $colour-button;
     color: $colour-button-text;
-
-    #equals{
-        width: 6rem;
-    }
 
     &:active{
         border: 0.125rem inset $colour-border;
@@ -26,4 +23,9 @@
     &__symbol{
         opacity: 85%;
     }
+}
+
+#equals{
+    width: 7rem;
+    border-radius: 10rem;
 }
