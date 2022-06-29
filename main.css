@@ -141,6 +141,7 @@ header {
 }
 .button__symbol {
   opacity: 85%;
+  font-size: 1.5rem;
 }
 
 #equals {
