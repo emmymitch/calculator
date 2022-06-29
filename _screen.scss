@@ -1,0 +1,26 @@
+.screen{
+    padding: 0.75rem;
+    padding-top: 3.5rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+
+    background-color: $colour-screen;
+    border: 4px inset $colour-border;
+    border-radius: 1rem;
+
+    &__history{
+        color: $colour-screen-text;
+        font-size: 1rem;
+
+        opacity: 50%;
+    }
+
+    &__current{
+        color: $colour-screen-text;
+        font-size: 3rem;
+        font-weight: 300;
+    }
+}
