@@ -22,7 +22,8 @@
 }
 
 header {
-  padding: 1rem;
+  margin: 2rem;
+  margin-bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,8 +121,8 @@ header {
 }
 
 .button {
-  width: 3rem;
-  height: 3rem;
+  width: 3.5rem;
+  height: 3.5rem;
   margin: 0.25rem;
   border: 0.125rem outset rgb(227, 173, 92);
   box-shadow: 0.125rem 0.125rem 0.25rem rgb(110, 84, 53);
