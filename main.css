@@ -20,7 +20,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: rgb(255, 221, 94);
-  border: 0.25rem outset rgb(227, 173, 92);
+  border: 0.25rem outset rgb(219, 195, 159);
   border-radius: 2rem;
   font-family: "Barlow", monospace;
 }
@@ -28,13 +28,17 @@ body {
 @media screen and (max-width: 930px) and (orientation: landscape) {
   #outline {
     margin: 0.25rem;
+    padding: 0.25rem;
     max-width: 95vw;
     height: 97vh;
     align-items: space-around;
   }
   #outline header {
-    align-self: flex-start;
-    padding-left: 1.75rem;
+    display: none;
+    order: 2;
+    align-self: center;
+    padding-right: 1.75rem;
+    padding-bottom: 2rem;
   }
 
   main {
@@ -44,12 +48,12 @@ body {
     justify-content: space-between;
   }
   main .screen {
-    margin: 1rem;
+    margin: 1.5rem;
     width: 90%;
     justify-content: flex-end;
   }
   main .buttons {
-    margin-top: -2rem;
+    margin-top: -0.0125rem;
     gap: 0.1rem;
   }
   main .button {
@@ -76,13 +80,13 @@ header {
   justify-content: center;
   align-items: flex-end;
   background-color: rgb(255, 250, 236);
-  border: 4px inset rgb(227, 173, 92);
+  border: 4px inset rgb(219, 195, 159);
   border-radius: 1rem;
 }
 .screen__history {
   color: rgb(28, 28, 29);
   font-size: 1rem;
-  opacity: 50%;
+  opacity: 80%;
 }
 .screen__current {
   color: rgb(28, 28, 29);
@@ -160,25 +164,34 @@ header {
   width: 3.5rem;
   height: 3.5rem;
   margin: 0.25rem;
-  border: 0.125rem outset rgb(227, 173, 92);
+  border: 0.125rem outset rgb(219, 195, 159);
   box-shadow: 0.125rem 0.125rem 0.25rem rgb(110, 84, 53);
   border-radius: 50%;
   font-family: "Barlow", monospace;
   font-weight: 600;
+}
+.button:active {
+  border: 0.125rem inset rgb(219, 195, 159);
+  box-shadow: inset 0.125rem 0.125rem 0.35rem rgb(100, 95, 88);
+}
+.button__number {
   font-size: 1.2rem;
   background-color: rgb(255, 217, 86);
   color: rgb(73, 70, 61);
 }
-.button:active {
-  border: 0.125rem inset rgb(227, 173, 92);
-  box-shadow: inset 0.125rem 0.125rem 0.25rem rgb(110, 84, 53);
-}
 .button__symbol {
   opacity: 85%;
   font-size: 1.5rem;
+  background-color: rgb(0, 43, 128);
+  color: white;
 }
 
 #equals {
   width: 7rem;
   border-radius: 10rem;
+  background-color: green;
+}
+
+#AC {
+  background-color: crimson;
 }

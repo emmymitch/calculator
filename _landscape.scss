@@ -1,13 +1,17 @@
 @media screen and (max-width: 930px) and (orientation: landscape){
     #outline{
         margin: 0.25rem;
+        padding: 0.25rem;
         max-width: 95vw;
         height: 97vh;
         align-items: space-around;
 
         header{
-            align-self: flex-start;
-            padding-left: 1.75rem;
+            display: none;
+            order: 2;
+            align-self: center;
+            padding-right: 1.75rem;
+            padding-bottom: 2rem;
         }
     }
 
@@ -18,13 +22,13 @@
         justify-content: space-between;
 
         .screen{
-            margin: 1rem;
+            margin: 1.5rem;
             width: 90%;
             justify-content: flex-end;
         }
 
         .buttons{
-            margin-top: -2rem;
+            margin-top: -0.0125rem;
             gap: 0.1rem;
         }
 
