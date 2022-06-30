@@ -9,20 +9,23 @@ let display = document.querySelector(".screen__current");
 let history = document.querySelector(".screen__history");
 const numberButtons = document.querySelectorAll(".button__number");
 const symbolButtons = document.querySelectorAll(".button__symbol");
+const equalsButton = document.querySelector(".button__equals");
 
 //Defining functions ////////////////////////////////////////////////////////////////
 const getInput = (event) => {
     input = event.target.value;
 
-    if (operator = undefined){
+    if (operator == undefined){
         xArray.push(input);
         display.innerText = input;
         history.innerText += input;
+        console.log("XA " + xArray);
 
     } else{
         yArray.push(input);
         display.innerText = input;
         history.innerText += input;
+        console.log("YA " + yArray);
     }
 }
 
@@ -48,9 +51,17 @@ const getOperator = (event) => {
         display.innerText = operator;
         history.innerText += operator;
     }
+
+    return operator;
 }
 
 const performEquation = () => {
+    console.log(operator);
+
+    // if (xArray==[]){ //For if you click = before operator
+
+
+    // } else 
     if (operator == "+"){
         z = Number(xArray.join()) + Number(yArray.join());
         display.innerText = z;
@@ -68,12 +79,15 @@ const performEquation = () => {
         display.innerText = z;
 
     } else if (operator == "+-"){
-        x =  Number(xArray.join()) * (-1);
+        z =  Number(xArray.join()) * (-1);
         display.innerText = z;
 
     } else if (operator == "%"){
-        x = Number(xArray.join()) / 100;
+        z = Number(xArray.join()) / 100;
         display.innerText = z;
+
+    } else if (operator == undefined){
+        display.innerText = Number(xArray.join());
 
     } else{
         display.innerText = "ERROR";
@@ -88,3 +102,5 @@ numberButtons.forEach((button) => {
 symbolButtons.forEach((button) => {
     button.addEventListener("click", getOperator);
 })
+
+equalsButton.addEventListener("click", performEquation);
