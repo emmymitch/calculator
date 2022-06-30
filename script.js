@@ -16,13 +16,13 @@ const getInput = (event) => {
 
     if (operator = undefined){
         xArray.push(input);
-        display.innerText = `${input}`;
-        history.innerText += `${input}`;
+        display.innerText = input;
+        history.innerText += input;
 
     } else{
         yArray.push(input);
-        display.innerText = `${input}`;
-        history.innerText += `${input}`;
+        display.innerText = input;
+        history.innerText += input;
     }
 }
 
@@ -46,6 +46,7 @@ const getOperator = (event) => {
 
     } else{
         display.innerText = operator;
+        history.innerText += operator;
     }
 }
 
