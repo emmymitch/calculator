@@ -75,6 +75,7 @@ header {
   padding: 0.75rem;
   padding-top: 3.5rem;
   width: 100%;
+  height: 10rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -84,6 +85,8 @@ header {
   border-radius: 1rem;
 }
 .screen__history {
+  height: 100%;
+  word-wrap: break-word;
   color: rgb(28, 28, 29);
   font-size: 1rem;
   opacity: 80%;
@@ -94,68 +97,68 @@ header {
   font-weight: 300;
 }
 
-.buttons {
+.button-grid {
   margin: 1.5rem 0;
   display: grid;
   grid-template-columns: repeat(1fr, 4);
   grid-template-rows: repeat(1fr, 5);
   gap: 0.5rem;
 }
-.buttons #AC {
+.button-grid #AC {
   grid-area: 1/1/2/2;
 }
-.buttons #plus-minus {
+.button-grid #plus-minus {
   grid-area: 1/2/2/3;
 }
-.buttons #percent {
+.button-grid #percent {
   grid-area: 1/3/2/4;
 }
-.buttons #divide {
+.button-grid #divide {
   grid-area: 1/4/2/5;
 }
-.buttons #b7 {
+.button-grid #b7 {
   grid-area: 2/1/3/2;
 }
-.buttons #b8 {
+.button-grid #b8 {
   grid-area: 2/2/3/3;
 }
-.buttons #b9 {
+.button-grid #b9 {
   grid-area: 2/3/3/4;
 }
-.buttons #multiply {
+.button-grid #multiply {
   grid-area: 2/4/3/5;
 }
-.buttons #b4 {
+.button-grid #b4 {
   grid-area: 3/1/4/2;
 }
-.buttons #b5 {
+.button-grid #b5 {
   grid-area: 3/2/4/3;
 }
-.buttons #b6 {
+.button-grid #b6 {
   grid-area: 3/3/4/4;
 }
-.buttons #subtract {
+.button-grid #subtract {
   grid-area: 3/4/4/5;
 }
-.buttons #b1 {
+.button-grid #b1 {
   grid-area: 4/1/5/2;
 }
-.buttons #b2 {
+.button-grid #b2 {
   grid-area: 4/2/5/3;
 }
-.buttons #b3 {
+.button-grid #b3 {
   grid-area: 4/3/5/4;
 }
-.buttons #add {
+.button-grid #add {
   grid-area: 4/4/5/5;
 }
-.buttons #decimal {
+.button-grid #decimal {
   grid-area: 5/1/6/2;
 }
-.buttons #b0 {
+.button-grid #b0 {
   grid-area: 5/2/6/3;
 }
-.buttons #equals {
+.button-grid #equals {
   grid-area: 5/3/6/5;
   justify-self: center;
 }

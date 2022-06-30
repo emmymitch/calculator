@@ -15,38 +15,39 @@
 
         <main>
             <section class="screen">
-                <p class="screen__history">8x4</p>
+                <p class="screen__history">4x8</p>
                 <h2 class="screen__current">32</h2>
             </section>
 
-            <section class="buttons">
-                <button class="button button__symbol" id="AC">AC</button>
-                <button class="button button__symbol" id="plus-minus">±</button>
-                <button class="button button__symbol" id="percent">%</button>
-                <button class="button button__symbol" id="divide">÷</button>
+            <section class="button-grid">
+                <button value="clear" class="button button__symbol" id="AC">AC</button>
+                <button value="+-" class="button button__symbol" id="plus-minus">±</button>
+                <button value="%" class="button button__symbol" id="percent">%</button>
+                <button value="/" class="button button__symbol" id="divide">÷</button>
 
-                <button class="button button__number" id="b7">7</button>
-                <button class="button button__number" id="b8">8</button>
-                <button class="button button__number" id="b9">9</button>
-                <button class="button button__symbol" id="multiply">x</button>
+                <button value="7" class="button button__number" id="b7">7</button>
+                <button value="8" class="button button__number" id="b8">8</button>
+                <button value="9" class="button button__number" id="b9">9</button>
+                <button value="*" class="button button__symbol" id="multiply">x</button>
 
-                <button class="button button__number" id="b4">4</button>
-                <button class="button button__number" id="b5">5</button>
-                <button class="button button__number" id="b6">6</button>
-                <button class="button button__symbol" id="subtract">-</button>
+                <button value="4" class="button button__number" id="b4">4</button>
+                <button value="5" class="button button__number" id="b5">5</button>
+                <button value="6" class="button button__number" id="b6">6</button>
+                <button value="-" class="button button__symbol" id="subtract">-</button>
 
-                <button class="button button__number" id="b1">1</button>
-                <button class="button button__number" id="b2">2</button>
-                <button class="button button__number" id="b3">3</button>
-                <button class="button button__symbol" id="add">+</button>
+                <button value="1" class="button button__number" id="b1">1</button>
+                <button value="2" class="button button__number" id="b2">2</button>
+                <button value="3" class="button button__number" id="b3">3</button>
+                <button value="+" class="button button__symbol" id="add">+</button>
 
-                <button class="button button__number" id="decimal">.</button>
-                <button class="button button__number" id="b0">0</button>
-                <button class="button button__symbol" id="equals">=</button>
+                <button value="." class="button button__number" id="decimal">.</button>
+                <button value="0" class="button button__number" id="b0">0</button>
+                <button value="=" class="button button__symbol" id="equals">=</button>
             </section>
         </main>
 
     </div>
     
+    <script src="./script.js"></script>
 </body>
 </html>
