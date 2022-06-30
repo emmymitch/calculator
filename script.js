@@ -5,11 +5,13 @@ let y = 0;
 let yArray = [];
 let z = 0;
 let operator = undefined;
+let plusMinus = undefined;
 let display = document.querySelector(".screen__current");
 let history = document.querySelector(".screen__history");
 const numberButtons = document.querySelectorAll(".button__number");
 const symbolButtons = document.querySelectorAll(".button__symbol");
 const equalsButton = document.querySelector(".button__equals");
+const plusMinusButton = document.querySelector("#plus-minus");
 
 //Defining functions ////////////////////////////////////////////////////////////////
 const getInput = (event) => {
@@ -29,21 +31,27 @@ const getInput = (event) => {
     }
 }
 
+const resetValues = () => {
+    x = 0;
+    xArray = [];
+    y = 0;
+    yArray = [];
+    z = 0;
+    operator = undefined;
+    plusMinus = undefined;
+    history.innerText = " ";
+}
+
 const getOperator = (event) => {
     operator = event.target.value;
 
     if (operator == "clear"){
-        x = 0;
-        xArray = [];
-        y = 0;
-        yArray = [];
-        z = 0;
-        operator = undefined;
+        resetValues();
         display.innerText = "0";
-        history.innerText = " ";
 
     } else if (operator == "+-"){
         xArray.unshift("-");
+        console.log("XA " + xArray);
         display.innerText = "-" + display.innerText;
         history.innerText = "-" + history.innerText;
 
@@ -55,43 +63,51 @@ const getOperator = (event) => {
     return operator;
 }
 
+const switchPositiveNegative = (event) => {
+    plusMinus = event.target.value;
+    if (xArray[0]=="-"){
+        return;
+    } else{
+        xArray.unshift("-");
+        console.log("XA " + xArray + "PM " + plusMinus);
+        display.innerText = "-" + display.innerText;
+        history.innerText = "-" + history.innerText;
+        return plusMinus;
+    }
+}
+
 const performEquation = () => {
-    console.log(operator);
-
-    // if (xArray==[]){ //For if you click = before operator
-
-
-    // } else 
     if (operator == "+"){
-        z = Number(xArray.join()) + Number(yArray.join());
-        display.innerText = z;
+        z = Number(xArray.join("")) + Number(yArray.join(""));
 
     } else if (operator == "-"){
-        z = Number(xArray.join()) - Number(yArray.join());
-        display.innerText = z;
+        z = Number(xArray.join("")) - Number(yArray.join(""));
 
     } else if (operator == "*"){
-        z = Number(xArray.join()) * Number(yArray.join());
-        display.innerText = z;
+        z = Number(xArray.join("")) * Number(yArray.join(""));
 
     } else if (operator == "/"){
-        z = Number(xArray.join()) / Number(yArray.join());
-        display.innerText = z;
+        z = Number(xArray.join("")) / Number(yArray.join(""));
 
-    } else if (operator == "+-"){
-        z =  Number(xArray.join()) * (-1);
-        display.innerText = z;
+    // } else if (operator == "+-"){
+    //     z =  Number(xArray.join("")) * (-1);
+    //     // display.innerText = z;
 
     } else if (operator == "%"){
-        z = Number(xArray.join()) / 100;
-        display.innerText = z;
+        z = Number(xArray.join("")) / 100;
 
     } else if (operator == undefined){
-        display.innerText = Number(xArray.join());
+        z = Number(xArray.join(""));
 
-    } else{
-        display.innerText = "ERROR";
     }
+
+    // if (plusMinus = "+-"){
+    //     z = z*(-1);
+    // }
+    console.log("x " + xArray.join(""));
+    display.innerText = z;
+    history.innerText = " ";
+    resetValues();
 }
 
 // Adding triggers //////////////////////////////////////////////////////////////////
@@ -102,5 +118,7 @@ numberButtons.forEach((button) => {
 symbolButtons.forEach((button) => {
     button.addEventListener("click", getOperator);
 })
+
+//plusMinusButton.addEventListener("click", switchPositiveNegative);
 
 equalsButton.addEventListener("click", performEquation);
