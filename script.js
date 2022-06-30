@@ -14,22 +14,6 @@ const symbolButtons = document.querySelectorAll(".button__symbol");
 const getInput = (event) => {
     input = event.target.value;
 
-    // if (input == "clear"){
-    //     x = 0;
-    //     xArray = [];
-    //     y = 0;
-    //     yArray = [];
-    //     z = 0;
-    //     operator = undefined;
-    //     display.innerText = "0";
-    //     history.innerText = "";
-
-    // } else if (operator == "+-"){
-    //     xArray.unshift("-");
-    //     display.innerText = "-" + display.innerText;
-    //     history.innerText = "-" + history.innerText;
-
-    // } else 
     if (operator = undefined){
         xArray.push(input);
         display.innerText = `${input}`;
@@ -42,7 +26,7 @@ const getInput = (event) => {
     }
 }
 
-const getOperator = () => {
+const getOperator = (event) => {
     operator = event.target.value;
 
     if (operator == "clear"){
@@ -53,14 +37,16 @@ const getOperator = () => {
         z = 0;
         operator = undefined;
         display.innerText = "0";
-        history.innerText = "";
+        history.innerText = " ";
 
     } else if (operator == "+-"){
         xArray.unshift("-");
         display.innerText = "-" + display.innerText;
         history.innerText = "-" + history.innerText;
 
-    } 
+    } else{
+        display.innerText = operator;
+    }
 }
 
 const performEquation = () => {
