@@ -1,8 +1,8 @@
 // Defining inital values and variables /////////////////////////////////////////////
-let num1 = 0;
 let num1Array = [];
-let num2 = 0;
 let num2Array = [];
+let num1 = 0;
+let num2 = 0;
 let numResult = 0;
 let operator = undefined;
 let plusMinus = undefined;
@@ -39,12 +39,12 @@ const getInput = (event) => {
 }
 
 const getOperator = (event) => {
-    //perform outstanding operator
+    //Perform outstanding operator
     if (num2Array.length>0){
         performEquation()
     }
 
-    //define new operator
+    //Define new operator
     operator = event.target.value;
 
     if (operator == "all-clear"){
@@ -80,28 +80,34 @@ const convertToNumber = () => {
 const performEquation = () => {
     convertToNumber();
 
+    //Addition
     if (operator == "+"){
         numResult = num1 + num2;
 
+    //Subtraction
     } else if (operator == "-"){
         numResult = num1 - num2;
 
+    //Multiplication - with check so don't multiply by 0 - this would be bad
     } else if (operator == "*" && num2Array.length>0){
         numResult = num1 * num2;
 
+    //Division  - with check so don't divide by 0 - this would be worse
     } else if (operator == "/" && num2Array.length>0){
         numResult = num1 / num2;
 
+    //Percentage
     } else if (operator == "%"){
         numResult = (num1 /100);
         if (num2 != 0){
             numResult = numResult * num2;
         }
-
+    
+    //Return same number if no operator or if attempting to x or / by 0
     } else if ((operator == undefined) || (operator == "*"||"/" && num2Array.length==0)){
         numResult = num1;
     }
-    
+
     num1Array = [numResult];
     num2Array = [];
     return numResult;
@@ -110,7 +116,7 @@ const performEquation = () => {
 const displayResult = () => {
     performEquation(); 
     console.log("displayResults z=" + numResult);
-    display.innerText = Math.round((numResult+Number.EPSILON)*(10**7))/(10**7);
+    display.innerText = Math.round((numResult+Number.EPSILON)*(10**7))/(10**7); //to prevent stretching the screen for numbers with lots of digits
     history.innerText = " ";
     resetValues();
 }
