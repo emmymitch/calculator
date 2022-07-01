@@ -24,6 +24,7 @@ body{
 
     background-color: $colour-background;
     border: 0.25rem outset $colour-border;
+    box-shadow: 0rem 0rem 0.5rem $colour-shadow;
     border-radius: 2rem;
 
     font-family: $font-primary;

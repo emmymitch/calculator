@@ -21,6 +21,7 @@ body {
   align-items: center;
   background-color: rgb(255, 221, 94);
   border: 0.25rem outset rgb(219, 195, 159);
+  box-shadow: 0rem 0rem 0.5rem rgb(100, 95, 88);
   border-radius: 2rem;
   font-family: "Barlow", monospace;
 }
