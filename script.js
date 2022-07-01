@@ -116,7 +116,6 @@ const performEquation = () => {
 
 const displayResult = () => {
     performEquation(); 
-    console.log("displayResults z=" + numResult);
     display.innerText = Math.round((numResult+Number.EPSILON)*(10**7))/(10**7); //to prevent stretching the screen for numbers with lots of digits
     history.innerText = " ";
     resetValues();
