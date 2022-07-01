@@ -52,9 +52,6 @@ const getOperator = (event) => {
         resetValues();
         display.innerText = "0";
 
-    } else if (operator == "+-"){
-        switchSign();
-
     } else{
         display.innerText = operator;
         history.innerText += operator;
@@ -130,6 +127,6 @@ symbolButtons.forEach((button) => {
     button.addEventListener("click", getOperator);
 })
 
-//plusMinusButton.addEventListener("click", switchSign);
+plusMinusButton.addEventListener("click", switchSign);
 
 equalsButton.addEventListener("click", displayResult);
