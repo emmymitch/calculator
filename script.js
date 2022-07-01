@@ -15,7 +15,6 @@ const plusMinusButton = document.querySelector("#plus-minus");
 
 //Defining functions ////////////////////////////////////////////////////////////////
 const resetValues = () => {
-    z = 0;
     xArray = [z];
     yArray = [];
     operator = undefined;
@@ -30,58 +29,59 @@ const getInput = (event) => {
         xArray.push(input);
         display.innerText = input;
         history.innerText += input;
-        // console.log("XA Input " + xArray);
 
     } else{
         yArray.push(input);
         display.innerText = input;
         history.innerText += input;
-        // console.log("YA Input " + yArray);
     }
 }
 
-const getOperator = (event) => {  ////// add ifelse for =
+const getOperator = (event) => {
+    //perform outstanding operator
     if (yArray.length>0){
         performEquation()
     }
-    
+
+    //define new operator
     operator = event.target.value;
 
     if (operator == "clear"){
+        z=0;
         resetValues();
         display.innerText = "0";
 
-    // } else if (operator == "+-"){
-    //     xArray.unshift("-");
-    //     console.log("XA " + xArray);
-    //     display.innerText = "-" + display.innerText;
-    //     history.innerText = "-" + history.innerText;
+    } else if (operator == "+-"){
+        switchSign();
 
     } else{
         display.innerText = operator;
         history.innerText += operator;
         performEquation()
     }
-    return operator;
+    return;// operator;
 }
 
-const switchSign = (event) => {
-    plusMinus = event.target.value;
+const switchSign = () => {
     if (xArray[0]=="-"){
-        plusMinus = undefined;
-        return plusMinus;
+        return operator;
+
     } else{
         xArray.unshift("-");
-        console.log("XA " + xArray + "PM " + plusMinus);
-        display.innerText = "-" + display.innerText;
+        display.innerText = "-" + display.innerText
         history.innerText = "-" + history.innerText;
-        return plusMinus;
     }
 }
 
+const convertToNumber = () => {
+    num1 = Number(xArray.join(""));
+    num2 = Number(yArray.join(""));
+    return num1, num2;
+}
+
 const performEquation = () => {
-    console.log("xArray eqn input = " + xArray);
-    console.log("yArray eqn input = " + yArray);
+    convertToNumber();
+
     if (operator == "+"){
         z = Number(xArray.join("")) + Number(yArray.join(""));
 
@@ -94,17 +94,15 @@ const performEquation = () => {
     } else if (operator == "/" && yArray.length>0){
         z = Number(xArray.join("")) / Number(yArray.join(""));
 
-    // } else if (operator == "+-"){
-    //     z =  Number(xArray.join("")) * (-1);
-    //     // display.innerText = z;
-
-    } else if (operator == "%" && yArray.length>0){
-        z = Number(xArray.join("")) / 100;
+    } else if (operator == "%"){
+        console.log(Number(xArray.join("")));
+        console.log(Number(yArray.join("")));
+        z = (Number(xArray.join("")) /100) * Number(yArray.join(""));
 
     } else if (operator == undefined){
         z = Number(xArray.join(""));
 
-    } else if (operator == "*"||"/"||"%" && yArray.length==0){
+    } else if (operator == "*"||"/" && yArray.length==0){
         z = Number(xArray.join(""));
     }
     xArray = [z];
@@ -115,7 +113,7 @@ const performEquation = () => {
 const displayResult = () => {
     performEquation(); 
     console.log("displayResults z=" + z);
-    display.innerText = z;
+    display.innerText = Math.round((z+Number.EPSILON)*100)/100;
     history.innerText = " ";
     resetValues();
 }
