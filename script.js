@@ -1,122 +1,128 @@
 // Defining inital values and variables /////////////////////////////////////////////
-let x = 0;
-let xArray = [];
-let y = 0;
-let yArray = [];
-let z = 0;
+let num1Array = [];
+let num2Array = [];
+let num1 = 0;
+let num2 = 0;
+let numResult = 0;
 let operator = undefined;
 let plusMinus = undefined;
 let display = document.querySelector(".screen__current");
 let history = document.querySelector(".screen__history");
 const numberButtons = document.querySelectorAll(".button__number");
-const symbolButtons = document.querySelectorAll(".button__symbol");
-const equalsButton = document.querySelector(".button__equals");
+const symbolButtons = document.querySelectorAll(".button__symbol--operator");
+const equalsButton = document.querySelector("#equals");
 const plusMinusButton = document.querySelector("#plus-minus");
+
+
 
 //Defining functions ////////////////////////////////////////////////////////////////
 const resetValues = () => {
-    xArray = [z];
-    yArray = [];
+    num1Array = [numResult];
+    num2Array = [];
     operator = undefined;
     plusMinus = undefined;
     history.innerText = " ";
 }
 
+
 const getInput = (event) => {
     input = event.target.value;
 
     if (operator == undefined){
-        xArray.push(input);
-        display.innerText = input;
-        history.innerText += input;
+        num1Array.push(input);
 
     } else{
-        yArray.push(input);
-        display.innerText = input;
-        history.innerText += input;
+        num2Array.push(input);
     }
+
+    display.innerText = input;
+    history.innerText += input;
 }
 
 const getOperator = (event) => {
-    //perform outstanding operator
-    if (yArray.length>0){
+    //Perform outstanding operator
+    if (num2Array.length>0){
         performEquation()
     }
 
-    //define new operator
+    //Define new operator
     operator = event.target.value;
 
-    if (operator == "clear"){
-        z=0;
+    if (operator == "all-clear"){
+        numResult=0;
         resetValues();
         display.innerText = "0";
-
-    } else if (operator == "+-"){
-        switchSign();
 
     } else{
         display.innerText = operator;
         history.innerText += operator;
-        performEquation()
+        if (operator != "%"){performEquation()}
     }
-    return;// operator;
+    return;
 }
 
 const switchSign = () => {
-    if (xArray[0]=="-"){
-        return operator;
+    if (num1Array[0]=="-"){
+        return;
 
     } else{
-        xArray.unshift("-");
+        num1Array.unshift("-");
         display.innerText = "-" + display.innerText
         history.innerText = "-" + history.innerText;
     }
 }
 
 const convertToNumber = () => {
-    num1 = Number(xArray.join(""));
-    num2 = Number(yArray.join(""));
+    num1 = Number(num1Array.join(""));
+    num2 = Number(num2Array.join(""));
     return num1, num2;
 }
 
 const performEquation = () => {
     convertToNumber();
 
+    //Addition
     if (operator == "+"){
-        z = Number(xArray.join("")) + Number(yArray.join(""));
+        numResult = num1 + num2;
 
+    //Subtraction
     } else if (operator == "-"){
-        z = Number(xArray.join("")) - Number(yArray.join(""));
+        numResult = num1 - num2;
 
-    } else if (operator == "*" && yArray.length>0){
-        z = Number(xArray.join("")) * Number(yArray.join(""));
+    //Multiplication - with check so don't multiply by 0 - this would be bad
+    } else if (operator == "*" && num2Array.length>0){
+        numResult = num1 * num2;
 
-    } else if (operator == "/" && yArray.length>0){
-        z = Number(xArray.join("")) / Number(yArray.join(""));
+    //Division  - with check so don't divide by 0 - this would be worse
+    } else if (operator == "/" && num2Array.length>0){
+        numResult = num1 / num2;
 
+    //Percentage
     } else if (operator == "%"){
-        console.log(Number(xArray.join("")));
-        console.log(Number(yArray.join("")));
-        z = (Number(xArray.join("")) /100) * Number(yArray.join(""));
-
-    } else if (operator == undefined){
-        z = Number(xArray.join(""));
-
-    } else if (operator == "*"||"/" && yArray.length==0){
-        z = Number(xArray.join(""));
+        numResult = (num1 /100);
+        if (num2 != 0){
+            numResult = numResult * num2;
+        }
+    
+    //Return same number if no operator or if attempting to x or / by 0
+    } else if ((operator == undefined) || (operator == "*"||"/" && num2Array.length==0)){
+        numResult = num1;
     }
-    xArray = [z];
-    yArray = [];
-    return z;
+
+    num1Array = [numResult];
+    num2Array = [];
+    return numResult;
 }
 
 const displayResult = () => {
     performEquation(); 
-    console.log("displayResults z=" + z);
-    display.innerText = Math.round((z+Number.EPSILON)*100)/100;
+    console.log("displayResults z=" + numResult);
+    display.innerText = Math.round((numResult+Number.EPSILON)*(10**7))/(10**7); //to prevent stretching the screen for numbers with lots of digits
     history.innerText = " ";
     resetValues();
 }
+
+
 
 // Adding triggers //////////////////////////////////////////////////////////////////
 numberButtons.forEach((button) => {
@@ -127,6 +133,5 @@ symbolButtons.forEach((button) => {
     button.addEventListener("click", getOperator);
 })
 
-//plusMinusButton.addEventListener("click", switchSign);
-
+plusMinusButton.addEventListener("click", switchSign);
 equalsButton.addEventListener("click", displayResult);

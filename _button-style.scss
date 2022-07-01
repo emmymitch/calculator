@@ -21,7 +21,7 @@
         color: $colour-button-text-dark;
     }
 
-    &__symbol, &__equals{
+    &__symbol, &__special{
         opacity: 85%;
         font-size: 1.5rem;
         background-color: $colour-button-symbol;
@@ -30,7 +30,8 @@
 }
 
 #equals{
-    width: 7rem;
+    width: 85%;
+    justify-self: center;
     border-radius: 10rem;
     background-color: $colour-button-equals;
 }

@@ -2,6 +2,7 @@
     margin: 1.5rem 0;
     
     display: grid;
+    justify-content: space-between;
     grid-template-columns: repeat(1fr, 4);
     grid-template-rows: repeat(1fr, 5);
     gap: 0.5rem;
@@ -70,16 +71,16 @@
         grid-area: 4/4/5/5;
     }
 
-    #decimal{
-        grid-area: 5/1/6/2;
-    }
 
     #b0{
         grid-area: 5/2/6/3;
     }
 
+    #decimal{
+        grid-area: 5/1/6/2;
+    }
+
     #equals{
         grid-area: 5/3/6/5;
-        justify-self: center;
     }
 }
