@@ -4,7 +4,7 @@
     margin: 0.25rem;
 
     border: 0.125rem outset $colour-border;
-    box-shadow: 0.125rem 0.125rem 0.25rem rgb(110, 84, 53);
+    box-shadow: 0.125rem 0.125rem 0.25rem $colour-shadow;
     border-radius: 50%;
 
     font-family: $font-primary;
@@ -21,11 +21,11 @@
         color: $colour-button-text-dark;
     }
 
-    &__symbol{
+    &__symbol, &__equals{
         opacity: 85%;
         font-size: 1.5rem;
         background-color: $colour-button-symbol;
-        color: white;
+        color: $colour-button-text-light;
     }
 }
 

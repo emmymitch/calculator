@@ -14,6 +14,14 @@ const equalsButton = document.querySelector(".button__equals");
 const plusMinusButton = document.querySelector("#plus-minus");
 
 //Defining functions ////////////////////////////////////////////////////////////////
+const resetValues = () => {
+    xArray = [z];
+    yArray = [];
+    operator = undefined;
+    plusMinus = undefined;
+    history.innerText = " ";
+}
+
 const getInput = (event) => {
     input = event.target.value;
 
@@ -21,91 +29,91 @@ const getInput = (event) => {
         xArray.push(input);
         display.innerText = input;
         history.innerText += input;
-        console.log("XA " + xArray);
 
     } else{
         yArray.push(input);
         display.innerText = input;
         history.innerText += input;
-        console.log("YA " + yArray);
     }
 }
 
-const resetValues = () => {
-    x = 0;
-    xArray = [];
-    y = 0;
-    yArray = [];
-    z = 0;
-    operator = undefined;
-    plusMinus = undefined;
-    history.innerText = " ";
-}
+const getOperator = (event) => {
+    //perform outstanding operator
+    if (yArray.length>0){
+        performEquation()
+    }
 
-const getOperator = (event) => {  ////// add ifelse for =
+    //define new operator
     operator = event.target.value;
 
     if (operator == "clear"){
+        z=0;
         resetValues();
         display.innerText = "0";
 
     } else if (operator == "+-"){
-        xArray.unshift("-");
-        console.log("XA " + xArray);
-        display.innerText = "-" + display.innerText;
-        history.innerText = "-" + history.innerText;
+        switchSign();
 
     } else{
         display.innerText = operator;
         history.innerText += operator;
+        performEquation()
     }
-    return operator;
+    return;// operator;
 }
 
-const switchSign = (event) => {
-    plusMinus = event.target.value;
+const switchSign = () => {
     if (xArray[0]=="-"){
-        plusMinus = undefined;
-        return plusMinus;
+        return operator;
+
     } else{
         xArray.unshift("-");
-        console.log("XA " + xArray + "PM " + plusMinus);
-        display.innerText = "-" + display.innerText;
+        display.innerText = "-" + display.innerText
         history.innerText = "-" + history.innerText;
-        return plusMinus;
     }
+}
+
+const convertToNumber = () => {
+    num1 = Number(xArray.join(""));
+    num2 = Number(yArray.join(""));
+    return num1, num2;
 }
 
 const performEquation = () => {
+    convertToNumber();
+
     if (operator == "+"){
         z = Number(xArray.join("")) + Number(yArray.join(""));
 
     } else if (operator == "-"){
         z = Number(xArray.join("")) - Number(yArray.join(""));
 
-    } else if (operator == "*"){
+    } else if (operator == "*" && yArray.length>0){
         z = Number(xArray.join("")) * Number(yArray.join(""));
 
-    } else if (operator == "/"){
+    } else if (operator == "/" && yArray.length>0){
         z = Number(xArray.join("")) / Number(yArray.join(""));
 
-    // } else if (operator == "+-"){
-    //     z =  Number(xArray.join("")) * (-1);
-    //     // display.innerText = z;
-
     } else if (operator == "%"){
-        z = Number(xArray.join("")) / 100;
+        console.log(Number(xArray.join("")));
+        console.log(Number(yArray.join("")));
+        z = (Number(xArray.join("")) /100) * Number(yArray.join(""));
 
     } else if (operator == undefined){
         z = Number(xArray.join(""));
 
+    } else if (operator == "*"||"/" && yArray.length==0){
+        z = Number(xArray.join(""));
     }
+    xArray = [z];
+    yArray = [];
+    return z;
+}
 
-    // if (plusMinus = "+-"){
-    //     z = z*(-1);
-    // }
-    console.log("x " + xArray.join(""));
-    display.innerText = z;
+const displayResult = () => {
+    performEquation(); 
+    console.log("displayResults z=" + z);
+    display.innerText = Math.round((z+Number.EPSILON)*100)/100;
     history.innerText = " ";
     resetValues();
 }
@@ -121,4 +129,4 @@ symbolButtons.forEach((button) => {
 
 //plusMinusButton.addEventListener("click", switchSign);
 
-equalsButton.addEventListener("click", performEquation);
+equalsButton.addEventListener("click", displayResult);
