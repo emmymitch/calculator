@@ -22,6 +22,7 @@ const resetValues = () => {
     history.innerText = " ";
 }
 
+
 const getInput = (event) => {
     input = event.target.value;
 

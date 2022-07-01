@@ -30,14 +30,12 @@
 }
 
 #equals{
+    width: 7rem;
+    justify-self: center;
+    border-radius: 10rem;
     background-color: $colour-button-equals;
 }
 
 #AC{
     background-color: $colour-button-ac;
-}
-
-#DEL{
-    background-color: $colour-button-ac;
-    font-size: 1.2rem;
 }

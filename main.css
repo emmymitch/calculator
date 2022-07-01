@@ -155,17 +155,14 @@ header {
 .button-grid #add {
   grid-area: 4/4/5/5;
 }
-.button-grid #DEL {
-  grid-area: 5/1/6/2;
-}
 .button-grid #b0 {
   grid-area: 5/2/6/3;
 }
 .button-grid #decimal {
-  grid-area: 5/3/6/4;
+  grid-area: 5/1/6/2;
 }
 .button-grid #equals {
-  grid-area: 5/4/6/5;
+  grid-area: 5/3/6/5;
 }
 
 .button {
@@ -195,14 +192,12 @@ header {
 }
 
 #equals {
+  width: 7rem;
+  justify-self: center;
+  border-radius: 10rem;
   background-color: green;
 }
 
 #AC {
   background-color: crimson;
-}
-
-#DEL {
-  background-color: crimson;
-  font-size: 1.2rem;
 }
