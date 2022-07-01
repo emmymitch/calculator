@@ -1,9 +1,9 @@
 // Defining inital values and variables /////////////////////////////////////////////
-let x = 0;
-let xArray = [];
-let y = 0;
-let yArray = [];
-let z = 0;
+let num1 = 0;
+let num1Array = [];
+let num2 = 0;
+let num2Array = [];
+let numResult = 0;
 let operator = undefined;
 let plusMinus = undefined;
 let display = document.querySelector(".screen__current");
@@ -11,12 +11,12 @@ let history = document.querySelector(".screen__history");
 const numberButtons = document.querySelectorAll(".button__number");
 const symbolButtons = document.querySelectorAll(".button__symbol");
 const equalsButton = document.querySelector(".button__equals");
-const plusMinusButton = document.querySelector("#plus-minus");
+const plusMinusButton = document.querySelector(".button__plus-minus");
 
 //Defining functions ////////////////////////////////////////////////////////////////
 const resetValues = () => {
-    xArray = [z];
-    yArray = [];
+    num1Array = [numResult];
+    num2Array = [];
     operator = undefined;
     plusMinus = undefined;
     history.innerText = " ";
@@ -26,12 +26,12 @@ const getInput = (event) => {
     input = event.target.value;
 
     if (operator == undefined){
-        xArray.push(input);
+        num1Array.push(input);
         display.innerText = input;
         history.innerText += input;
 
     } else{
-        yArray.push(input);
+        num2Array.push(input);
         display.innerText = input;
         history.innerText += input;
     }
@@ -39,7 +39,7 @@ const getInput = (event) => {
 
 const getOperator = (event) => {
     //perform outstanding operator
-    if (yArray.length>0){
+    if (num2Array.length>0){
         performEquation()
     }
 
@@ -47,7 +47,7 @@ const getOperator = (event) => {
     operator = event.target.value;
 
     if (operator == "clear"){
-        z=0;
+        numResult=0;
         resetValues();
         display.innerText = "0";
 
@@ -57,25 +57,25 @@ const getOperator = (event) => {
     } else{
         display.innerText = operator;
         history.innerText += operator;
-        performEquation()
+        if (operator != "%"){performEquation()}
     }
-    return;// operator;
+    return;
 }
 
 const switchSign = () => {
-    if (xArray[0]=="-"){
+    if (num1Array[0]=="-"){
         return operator;
 
     } else{
-        xArray.unshift("-");
+        num1Array.unshift("-");
         display.innerText = "-" + display.innerText
         history.innerText = "-" + history.innerText;
     }
 }
 
 const convertToNumber = () => {
-    num1 = Number(xArray.join(""));
-    num2 = Number(yArray.join(""));
+    num1 = Number(num1Array.join(""));
+    num2 = Number(num2Array.join(""));
     return num1, num2;
 }
 
@@ -83,37 +83,39 @@ const performEquation = () => {
     convertToNumber();
 
     if (operator == "+"){
-        z = Number(xArray.join("")) + Number(yArray.join(""));
+        numResult = num1 + num2;
 
     } else if (operator == "-"){
-        z = Number(xArray.join("")) - Number(yArray.join(""));
+        numResult = num1 - num2;
 
-    } else if (operator == "*" && yArray.length>0){
-        z = Number(xArray.join("")) * Number(yArray.join(""));
+    } else if (operator == "*" && num2Array.length>0){
+        numResult = num1 * num2;
 
-    } else if (operator == "/" && yArray.length>0){
-        z = Number(xArray.join("")) / Number(yArray.join(""));
+    } else if (operator == "/" && num2Array.length>0){
+        numResult = num1 / num2;
 
     } else if (operator == "%"){
-        console.log(Number(xArray.join("")));
-        console.log(Number(yArray.join("")));
-        z = (Number(xArray.join("")) /100) * Number(yArray.join(""));
+        console.log("num1: "+num1+"  num2: "+num2);
+        numResult = (num1 /100);
+        if (num2 != 0){
+            numResult = numResult * num2;
+        }
 
     } else if (operator == undefined){
-        z = Number(xArray.join(""));
+        numResult = num1;
 
-    } else if (operator == "*"||"/" && yArray.length==0){
-        z = Number(xArray.join(""));
+    } else if (operator == "*"||"/" && num2Array.length==0){
+        numResult = num1;
     }
-    xArray = [z];
-    yArray = [];
-    return z;
+    num1Array = [numResult];
+    num2Array = [];
+    return numResult;
 }
 
 const displayResult = () => {
     performEquation(); 
-    console.log("displayResults z=" + z);
-    display.innerText = Math.round((z+Number.EPSILON)*100)/100;
+    console.log("displayResults z=" + numResult);
+    display.innerText = Math.round((numResult+Number.EPSILON)*100000000)/100000000;
     history.innerText = " ";
     resetValues();
 }
