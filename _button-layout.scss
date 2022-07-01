@@ -2,6 +2,7 @@
     margin: 1.5rem 0;
     
     display: grid;
+    justify-content: space-between;
     grid-template-columns: repeat(1fr, 4);
     grid-template-rows: repeat(1fr, 5);
     gap: 0.5rem;
