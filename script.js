@@ -42,7 +42,7 @@ const resetValues = () => {
     history.innerText = " ";
 }
 
-const getOperator = (event) => {
+const getOperator = (event) => {  ////// add ifelse for =
     operator = event.target.value;
 
     if (operator == "clear"){
@@ -59,14 +59,14 @@ const getOperator = (event) => {
         display.innerText = operator;
         history.innerText += operator;
     }
-
     return operator;
 }
 
-const switchPositiveNegative = (event) => {
+const switchSign = (event) => {
     plusMinus = event.target.value;
     if (xArray[0]=="-"){
-        return;
+        plusMinus = undefined;
+        return plusMinus;
     } else{
         xArray.unshift("-");
         console.log("XA " + xArray + "PM " + plusMinus);
@@ -119,6 +119,6 @@ symbolButtons.forEach((button) => {
     button.addEventListener("click", getOperator);
 })
 
-//plusMinusButton.addEventListener("click", switchPositiveNegative);
+//plusMinusButton.addEventListener("click", switchSign);
 
 equalsButton.addEventListener("click", performEquation);
