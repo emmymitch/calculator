@@ -21,7 +21,7 @@
         color: $colour-button-text-dark;
     }
 
-    &__symbol{
+    &__symbol, &__special{
         opacity: 85%;
         font-size: 1.5rem;
         background-color: $colour-button-symbol;
@@ -35,4 +35,9 @@
 
 #AC{
     background-color: $colour-button-ac;
+}
+
+#DEL{
+    background-color: $colour-button-ac;
+    font-size: 1.2rem;
 }

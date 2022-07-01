@@ -10,7 +10,7 @@ body {
   justify-content: center;
 }
 
-#outline {
+.outline {
   margin: 2rem;
   width: 95vw;
   max-width: 22.5rem;
@@ -26,14 +26,14 @@ body {
 }
 
 @media screen and (max-width: 930px) and (max-height: 500px) and (orientation: landscape) {
-  #outline {
+  .outline {
     margin: 0.25rem;
     padding: 0.25rem;
     max-width: 95vw;
     height: 97vh;
     align-items: space-around;
   }
-  #outline header {
+  .outline header {
     display: none;
     order: 2;
     align-self: center;
@@ -46,14 +46,17 @@ body {
     height: 90%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
   main .screen {
     margin: 1.5rem;
     width: 90%;
+    height: 90%;
     justify-content: flex-end;
   }
-  main .buttons {
-    margin-top: -0.0125rem;
+  main .button-grid {
+    width: 100%;
+    height: 100%;
     gap: 0.1rem;
   }
   main .button {
@@ -107,7 +110,7 @@ header {
 .button-grid #AC {
   grid-area: 1/1/2/2;
 }
-.button-grid #clear {
+.button-grid #plus-minus {
   grid-area: 1/2/2/3;
 }
 .button-grid #percent {
@@ -152,13 +155,13 @@ header {
 .button-grid #add {
   grid-area: 4/4/5/5;
 }
-.button-grid #decimal {
+.button-grid #DEL {
   grid-area: 5/1/6/2;
 }
 .button-grid #b0 {
   grid-area: 5/2/6/3;
 }
-.button-grid #plus-minus {
+.button-grid #decimal {
   grid-area: 5/3/6/4;
 }
 .button-grid #equals {
@@ -184,7 +187,7 @@ header {
   background-color: rgb(255, 217, 86);
   color: rgb(73, 70, 61);
 }
-.button__symbol {
+.button__symbol, .button__special {
   opacity: 85%;
   font-size: 1.5rem;
   background-color: rgb(0, 43, 128);
@@ -197,4 +200,9 @@ header {
 
 #AC {
   background-color: crimson;
+}
+
+#DEL {
+  background-color: crimson;
+  font-size: 1.2rem;
 }
