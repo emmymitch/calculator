@@ -9,9 +9,9 @@ let plusMinus = undefined;
 let display = document.querySelector(".screen__current");
 let history = document.querySelector(".screen__history");
 const numberButtons = document.querySelectorAll(".button__number");
-const symbolButtons = document.querySelectorAll(".button__symbol");
-const equalsButton = document.querySelector(".button__equals");
-const plusMinusButton = document.querySelector(".button__plus-minus");
+const symbolButtons = document.querySelectorAll(".button__symbol--operator");
+const equalsButton = document.querySelector("#equals");
+const plusMinusButton = document.querySelector("#plus-minus");
 
 //Defining functions ////////////////////////////////////////////////////////////////
 const resetValues = () => {
@@ -46,7 +46,7 @@ const getOperator = (event) => {
     //define new operator
     operator = event.target.value;
 
-    if (operator == "clear"){
+    if (operator == "all-clear"){
         numResult=0;
         resetValues();
         display.innerText = "0";
