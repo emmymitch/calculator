@@ -21,7 +21,6 @@ const resetValues = () => {
     num2Array = [];
     operator = undefined;
     plusMinus = undefined;
-    history.innerText = " ";
 }
 
 
@@ -52,6 +51,7 @@ const getOperator = (event) => {
         numResult=0;
         resetValues();
         display.innerText = "0";
+        history.innerText = " ";
 
     } else{
         display.innerText = operator;
@@ -115,9 +115,10 @@ const performEquation = () => {
 }
 
 const displayResult = () => {
-    performEquation(); 
-    display.innerText = Math.round((numResult+Number.EPSILON)*(10**7))/(10**7); //to prevent stretching the screen for numbers with lots of digits
-    history.innerText = " ";
+    performEquation();
+    roundNumber = Math.round((numResult+Number.EPSILON)*(10**7))/(10**7); //to prevent stretching the screen for numbers with lots of digits
+    display.innerText = roundNumber;
+    history.innerText = roundNumber; //shows that the result is still stored
     resetValues();
 }
 
