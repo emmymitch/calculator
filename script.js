@@ -62,7 +62,7 @@ const getOperator = (event) => {
 
 const switchSign = () => {
     if (num1Array[0]=="-"){
-        return operator;
+        return;
 
     } else{
         num1Array.unshift("-");
@@ -93,18 +93,15 @@ const performEquation = () => {
         numResult = num1 / num2;
 
     } else if (operator == "%"){
-        console.log("num1: "+num1+"  num2: "+num2);
         numResult = (num1 /100);
         if (num2 != 0){
             numResult = numResult * num2;
         }
 
-    } else if (operator == undefined){
-        numResult = num1;
-
-    } else if (operator == "*"||"/" && num2Array.length==0){
+    } else if ((operator == undefined) || (operator == "*"||"/" && num2Array.length==0)){
         numResult = num1;
     }
+    
     num1Array = [numResult];
     num2Array = [];
     return numResult;
@@ -113,7 +110,7 @@ const performEquation = () => {
 const displayResult = () => {
     performEquation(); 
     console.log("displayResults z=" + numResult);
-    display.innerText = Math.round((numResult+Number.EPSILON)*100000000)/100000000;
+    display.innerText = Math.round((numResult+Number.EPSILON)*(10**7))/(10**7);
     history.innerText = " ";
     resetValues();
 }
@@ -128,5 +125,4 @@ symbolButtons.forEach((button) => {
 })
 
 plusMinusButton.addEventListener("click", switchSign);
-
 equalsButton.addEventListener("click", displayResult);
