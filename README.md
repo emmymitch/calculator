@@ -30,10 +30,10 @@ Calculator must display result to user.
 - Function defined to display result
     - Accounts for multiple operator input
 
-
-
-## SCSS Styling
-- Designed to look pseudo-3D
-- Flex layout for aligning items
-- Grid layout for buttons
-- Landscape media query
+<br><br>
+## HTML & SCSS
+- Mobile-first design
+- Separated SCSS
+- Media queries for varying screen sizes
+- BEM
+- Flex and grid layouts
