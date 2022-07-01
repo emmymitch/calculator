@@ -123,6 +123,47 @@ const displayResult = () => {
 }
 
 
+//Keyboard compatibility
+const getInputFromKeys = (event) => {
+    input = event.key;
+    console.log(input);
+    //Number input
+    if ((input<=9 && input>=0) || (input<=105 && input >=96)){
+        if (operator == undefined){
+            num1Array.push(input);
+
+        } else{
+            num2Array.push(input);
+        }
+
+        display.innerText = input;
+        history.innerText += input;
+    }
+}
+
+const getOperatorfromKeys = (event) => {
+    //Perform outstanding operator
+    if (num2Array.length>0){
+        performEquation()
+    }
+
+    //Define new operator
+    operator = event.key;
+
+    if (operator == "all-clear"){
+        numResult=0;
+        resetValues();
+        display.innerText = "0";
+        history.innerText = " ";
+
+    } else{
+        display.innerText = operator;
+        history.innerText += operator;
+        if (operator != "%"){performEquation()}
+    }
+    return;
+}
+
 
 // Adding triggers //////////////////////////////////////////////////////////////////
 numberButtons.forEach((button) => {
@@ -135,3 +176,5 @@ symbolButtons.forEach((button) => {
 
 plusMinusButton.addEventListener("click", switchSign);
 equalsButton.addEventListener("click", displayResult);
+window.addEventListener("keydown", getInputFromKeys);
+window.addEventListener("keydown", getOperatorFromKeys);
