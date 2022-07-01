@@ -41,6 +41,10 @@ const getInput = (event) => {
 }
 
 const getOperator = (event) => {  ////// add ifelse for =
+    if (yArray.length>0){
+        performEquation()
+    }
+    
     operator = event.target.value;
 
     if (operator == "clear"){
