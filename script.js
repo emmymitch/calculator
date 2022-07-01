@@ -13,6 +13,8 @@ const symbolButtons = document.querySelectorAll(".button__symbol--operator");
 const equalsButton = document.querySelector("#equals");
 const plusMinusButton = document.querySelector("#plus-minus");
 
+
+
 //Defining functions ////////////////////////////////////////////////////////////////
 const resetValues = () => {
     num1Array = [numResult];
@@ -28,14 +30,13 @@ const getInput = (event) => {
 
     if (operator == undefined){
         num1Array.push(input);
-        display.innerText = input;
-        history.innerText += input;
 
     } else{
         num2Array.push(input);
-        display.innerText = input;
-        history.innerText += input;
     }
+
+    display.innerText = input;
+    history.innerText += input;
 }
 
 const getOperator = (event) => {
@@ -120,6 +121,8 @@ const displayResult = () => {
     history.innerText = " ";
     resetValues();
 }
+
+
 
 // Adding triggers //////////////////////////////////////////////////////////////////
 numberButtons.forEach((button) => {
