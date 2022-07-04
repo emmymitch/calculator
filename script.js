@@ -69,13 +69,19 @@ const getOperator = (event) => {
 }
 
 const switchSign = () => {
-    if (num1Array[0]=="-"){
+    if (num1Array[0]=="-" || num2Array[0]=="-"){
         return;
 
-    } else{
+    } else if (operator == undefined){
         num1Array.unshift("-");
-        display.innerText = "-" + display.innerText
+        display.innerText = "-" + display.innerText;
         history.innerText = "-" + history.innerText;
+        
+    } else{
+        num2Array.unshift("-");
+        display.innerText = "-" + display.innerText;
+        const operatorPlace = history.innerText.indexOf(operator);
+        history.innerText = history.innerText.slice(0, operatorPlace+1) + "-" + history.innerText.slice(operatorPlace+1);
     }
 }
 
