@@ -1,4 +1,4 @@
-@use "./variables" as *;
+@use "./scss/variables" as *;
 
 *{
     margin: 0;
@@ -30,8 +30,8 @@ body{
     font-family: $font-primary;
 }
 
-@import "./landscape";
-@import "./header";
-@import "./screen";
-@import "./button-layout";
-@import "./button-style";
+@import "./scss/landscape";
+@import "./scss/header";
+@import "./scss/screen";
+@import "./scss/button-layout";
+@import "./scss/button-style";
