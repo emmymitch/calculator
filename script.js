@@ -23,7 +23,6 @@ const resetValues = () => {
     plusMinus = undefined;
 }
 
-
 const getInput = (event) => {
 
     // Input control for mouse/keyboard
@@ -31,7 +30,7 @@ const getInput = (event) => {
         input = event.target.value;
     } else if ((event.type = "keydown") && ((event.key<=9 && event.key>=0))){
         input = event.key;
-    } else if ((event.type = "keydown") && (!(event.key<=9 && event.key>=0))){ //For non-numerical key press
+    } else if ((event.type = "keydown") && (!event.key<=9)){ //For non-numerical key press
         return;
     }
 
@@ -54,11 +53,6 @@ const getOperator = (event) => {
 
     //Define new operator
     operator = event.target.value;
-    if (event.type == "click"){
-        operator = event.target.value;
-    } else if (event.type = "keydown"){
-        operator = event.key;
-    }
 
     if (operator == "all-clear"){
         numResult=0;
@@ -117,7 +111,7 @@ const performEquation = () => {
             numResult = numResult * num2;
         }
     
-    //Return same number if no operator or if attempting to x or / by 0
+    //Return same number if no operator or if attempting to * or / by 0
     } else if ((operator == undefined) || (operator == "*"||"/" && num2Array.length==0)){
         numResult = num1;
     }
@@ -136,31 +130,6 @@ const displayResult = () => {
 }
 
 
-//Keyboard compatibility
-
-// const getOperatorfromKeys = (event) => {
-//     //Perform outstanding operator
-//     if (num2Array.length>0){
-//         performEquation()
-//     }
-
-//     //Define new operator
-//     operator = event.key;
-
-//     if (operator == "all-clear"){
-//         numResult=0;
-//         resetValues();
-//         display.innerText = "0";
-//         history.innerText = " ";
-
-//     } else{
-//         display.innerText = operator;
-//         history.innerText += operator;
-//         if (operator != "%"){performEquation()}
-//     }
-//     return;
-// }
-
 
 // Adding triggers //////////////////////////////////////////////////////////////////
 numberButtons.forEach((button) => {
@@ -174,4 +143,3 @@ symbolButtons.forEach((button) => {
 plusMinusButton.addEventListener("click", switchSign);
 equalsButton.addEventListener("click", displayResult);
 window.addEventListener("keydown", getInput);
-//window.addEventListener("keydown", getOperatorFromKeys);
