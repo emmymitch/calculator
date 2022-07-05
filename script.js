@@ -48,7 +48,6 @@ const getInput = (event) => {
                 num1Array.push(input);
             }
 
-
         } else{
             if (includesDecimal == false && input =="."){
                 num2Array.push(input);
@@ -120,6 +119,7 @@ const switchSign = () => {
             
         } else{
             num2Array.unshift("-");
+            display.innerText = "-" + display.innerText;
             history.innerText = history.innerText.slice(0, operatorPlace+1) + "-" + history.innerText.slice(operatorPlace+1);
         }
     }
@@ -188,4 +188,5 @@ symbolButtons.forEach((button) => {
 
 plusMinusButton.addEventListener("click", switchSign);
 equalsButton.addEventListener("click", displayResult);
+
 window.addEventListener("keydown", getInput);
