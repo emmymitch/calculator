@@ -57,10 +57,9 @@ const getInput = (event) => {
                 num2Array.push(input);
             }
         }
-
-        display.innerText = input;
-        history.innerText += input;
-
+        
+    display.innerText = input;
+    history.innerText += input;
 }
 
 const checkDecimal = () => {
