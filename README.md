@@ -7,6 +7,7 @@ Calculator needed a way to handle one or more inputs.
 - On mouse click, store numerical input as string in array
     - num1Array if operator undefined
     - num2Array if operator defined
+    - Checks to ensure only 1 decimal point
 - On mouse click, store operator as variable
 - Display current input on screen
 - Add current input to history and display on screen
@@ -29,11 +30,11 @@ Calculator must perform basic mathematics.
 Calculator must display result to user.
 - Function defined to display result
     - Accounts for multiple operator input
+    - Rounds long decimals
 
 <br><br>
 ## HTML & SCSS
 - Mobile-first design
 - Separated SCSS
-- Media queries for varying screen sizes
 - BEM
 - Flex and grid layouts
