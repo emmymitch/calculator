@@ -81,8 +81,10 @@ const switchSign = () => {
             history.innerText = "-" + history.innerText;
 
         }
+        
     } else{
         const operatorPlace = history.innerText.indexOf(operator);
+
         if (num2Array[0] == "-"){
             num2Array.shift();
             display.innerText = " " + display.innerText;
