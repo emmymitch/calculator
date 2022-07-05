@@ -4,8 +4,11 @@ let num2Array = [];
 let num1 = 0;
 let num2 = 0;
 let numResult = 0;
+
 let operator = undefined;
 let plusMinus = undefined;
+let includesDecimal = false;
+
 let display = document.querySelector(".screen__current");
 let history = document.querySelector(".screen__history");
 const numberButtons = document.querySelectorAll(".button__number");
@@ -34,15 +37,40 @@ const getInput = (event) => {
         return;
     }
 
+    // To prevent having multiple decimal points
+    checkDecimal();
+        if (operator == undefined){
+            if (includesDecimal == false && input =="."){
+                num1Array.push(input);
+            } else if (includesDecimal == true && input =="."){
+                return;
+            } else{
+                num1Array.push(input);
+            }
+
+
+        } else{
+            if (includesDecimal == false && input =="."){
+                num2Array.push(input);
+            } else if (includesDecimal == true && input =="."){
+                return;
+            } else{
+                num2Array.push(input);
+            }
+        }
+
+        display.innerText = input;
+        history.innerText += input;
+
+}
+
+const checkDecimal = () => {
     if (operator == undefined){
-        num1Array.push(input);
-
+        includesDecimal = num1Array.includes(".");
     } else{
-        num2Array.push(input);
+        includesDecimal = num2Array.includes(".");
     }
-
-    display.innerText = input;
-    history.innerText += input;
+    return includesDecimal;
 }
 
 const getOperator = (event) => {
@@ -81,7 +109,7 @@ const switchSign = () => {
             history.innerText = "-" + history.innerText;
 
         }
-        
+
     } else{
         const operatorPlace = history.innerText.indexOf(operator);
 
