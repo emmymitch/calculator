@@ -76,6 +76,11 @@ const getOperator = (event) => {
     if (num2Array.length>0){
         performEquation()
     }
+    
+    //Prevent adjacent operators
+    if ((num2Array.length==0) && (operator != undefined)){
+        return;
+    }
 
     //Define new operator
     operator = event.target.value;
