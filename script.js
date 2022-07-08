@@ -39,7 +39,7 @@ const getInput = (event) => {
 
     // To prevent having multiple decimal points
     checkDecimal();
-        if (operator == undefined){
+        if (operator == undefined && history.innerText.length <= 30){
             if (includesDecimal == false && input =="."){
                 num1Array.push(input);
             } else if (includesDecimal == true && input =="."){
@@ -48,7 +48,7 @@ const getInput = (event) => {
                 num1Array.push(input);
             }
 
-        } else{
+        } else if (history.innerText.length <= 30){
             if (includesDecimal == false && input =="."){
                 num2Array.push(input);
             } else if (includesDecimal == true && input =="."){
@@ -56,6 +56,8 @@ const getInput = (event) => {
             } else{
                 num2Array.push(input);
             }
+        } else{
+            return;
         }
         
     display.innerText = input;
@@ -173,8 +175,17 @@ const performEquation = () => {
 
 const displayResult = () => {
     performEquation();
+
+    //Round long decimals
     roundNumber = Math.round((numResult+Number.EPSILON)*(10**7))/(10**7); //to prevent stretching the screen for numbers with lots of digits
-    display.innerText = roundNumber;
+    
+    //Check if fit on display
+    if (String(roundNumber).length <= 8){
+        display.innerText = roundNumber;
+    } else{
+        display.innerText = String(roundNumber).slice(0, 8) + "...";
+    }
+
     history.innerText = roundNumber; //shows that the result is still stored
     resetValues();
 }
