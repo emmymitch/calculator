@@ -72,14 +72,14 @@ const checkDecimal = () => {
 }
 
 const getOperator = (event) => {
-    //Perform outstanding operator
-    if (num2Array.length>0){
-        performEquation()
-    }
-    
     //Prevent adjacent operators
     if ((num2Array.length==0) && (operator != undefined)){
         return;
+    }
+
+    //Perform outstanding operator
+    if (num2Array.length>0){
+        performEquation()
     }
 
     //Define new operator
