@@ -28,7 +28,7 @@ const resetValues = () => {
 
 const getInput = (event) => {
 
-    // Input control for mouse/keyboard
+    // Checks if inputting via mouse or keyboard and gets appropriate value
     if (event.type == "click"){
         input = event.target.value;
     } else if ((event.type = "keydown") && ((event.key<=9 && event.key>=0))){
@@ -39,26 +39,35 @@ const getInput = (event) => {
 
     // To prevent having multiple decimal points
     checkDecimal();
-        if (operator == undefined && history.innerText.length <= 30){
-            if (includesDecimal == false && input =="."){
-                num1Array.push(input);
-            } else if (includesDecimal == true && input =="."){
-                return;
-            } else{
-                num1Array.push(input);
-            }
 
-        } else if (history.innerText.length <= 30){
-            if (includesDecimal == false && input =="."){
-                num2Array.push(input);
-            } else if (includesDecimal == true && input =="."){
-                return;
-            } else{
-                num2Array.push(input);
-            }
-        } else{
+    //Add input onto num1 if operator not yet pressed. Also checks length of history so it doesn't run off the screen
+    if (operator == undefined && history.innerText.length <= 30){
+
+        //Add input onto num1 if it doesn't already include a decimal
+        if (includesDecimal == false && input =="."){
+            num1Array.push(input);
+        } else if (includesDecimal == true && input =="."){
             return;
+        } else{
+            num1Array.push(input);
         }
+
+    //If operator pressed, add input onto num2
+    } else if (history.innerText.length <= 30){
+
+        //Add input onto num2 if it doesn't already include a decimal
+        if (includesDecimal == false && input =="."){
+            num2Array.push(input);
+        } else if (includesDecimal == true && input =="."){
+            return;
+        } else{
+            num2Array.push(input);
+        }
+
+    //If the history if too long, stop accepting new inputs
+    } else{
+        return;
+    }
         
     display.innerText = input;
     history.innerText += input;
@@ -96,13 +105,18 @@ const getOperator = (event) => {
     } else{
         display.innerText = operator;
         history.innerText += operator;
-        if (operator != "%"){performEquation()}
+        //Prevents % from being performed twice, since it can work with only 1 input
+        if (operator != "%"){performEquation()};
     }
+
     return;
 }
 
 const switchSign = () => {
+    //Check which numArray we're dealing with
     if (operator == undefined){
+
+        //Is there already a -? If so, -- = + so just get rid
         if (num1Array[0] == "-"){
             num1Array.shift();
             display.innerText = display.innerText.slice(1);
@@ -116,11 +130,14 @@ const switchSign = () => {
         }
 
     } else{
+        //Find position of operator/where num2 starts
         const operatorPlace = history.innerText.indexOf(operator);
 
+        //Check for -
         if (num2Array[0] == "-"){
             num2Array.shift();
             display.innerText = " " + display.innerText;
+            //Make sure the - gets taken out of the correct place
             history.innerText = history.innerText.slice(0, operatorPlace+1) + history.innerText.slice(operatorPlace+2);
             
         } else{
@@ -148,7 +165,7 @@ const performEquation = () => {
     } else if (operator == "-"){
         numResult = num1 - num2;
 
-    //Multiplication - with check so don't multiply by 0 - this would be bad
+    //Multiplication - with check so don't multiply by nothing - this would be bad
     } else if (operator == "*" && num2Array.length>0){
         numResult = num1 * num2;
 
@@ -159,6 +176,7 @@ const performEquation = () => {
     //Percentage
     } else if (operator == "%"){
         numResult = (num1 /100);
+        //If there's a second number, find num1% of it
         if (num2 != 0){
             numResult = numResult * num2;
         }
@@ -176,12 +194,14 @@ const performEquation = () => {
 const displayResult = () => {
     performEquation();
 
-    //Round long decimals
-    roundNumber = Math.round((numResult+Number.EPSILON)*(10**7))/(10**7); //to prevent stretching the screen for numbers with lots of digits
+    //Round long decimals so they fit on the screen
+    roundNumber = Math.round((numResult+Number.EPSILON)*(10**7))/(10**7);
     
     //Check if fit on display
     if (String(roundNumber).length <= 8){
         display.innerText = roundNumber;
+    
+    //If not, add ... to imply there's more digits
     } else{
         display.innerText = String(roundNumber).slice(0, 8) + "...";
     }
