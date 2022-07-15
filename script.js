@@ -31,9 +31,9 @@ const getInput = (event) => {
     // Checks if inputting via mouse or keyboard and gets appropriate value
     if (event.type == "click"){
         input = event.target.value;
-    } else if ((event.type = "keydown") && ((event.key<=9 && event.key>=0))){
+    } else if ((event.type == "keydown") && ((event.key<=9 && event.key>=0))){
         input = event.key;
-    } else if ((event.type = "keydown") && (!event.key<=9)){ //For non-numerical key press
+    } else if ((event.type == "keydown") && (!event.key<=9)){ //For non-numerical key press
         return;
     }
 
