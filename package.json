@@ -1,0 +1,24 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "Built in HTML, SCSS, and Javascript",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emmymitch/calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emmymitch/calculator/issues"
+  },
+  "homepage": "https://github.com/emmymitch/calculator#readme",
+  "devDependencies": {
+    "cypress": "^10.3.0"
+  }
+}
